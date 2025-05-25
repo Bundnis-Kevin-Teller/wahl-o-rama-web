@@ -1,0 +1,2 @@
+Diese Datei dient als Platzhalter für die Wahlprogramme der Regierungen.
+In einer Produktivumgebung würden hier die tatsächlichen PDF-Dateien der Wahlprogramme gespeichert sein.
