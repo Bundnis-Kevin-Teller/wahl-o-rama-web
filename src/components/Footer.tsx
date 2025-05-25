@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { VoteIcon, FacebookIcon, TwitterIcon, InstagramIcon } from 'lucide-react';
+import { VoteIcon } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="font-semibold text-lg mb-4">Kontakt</h3>
             <ul className="space-y-2">
-              <li className="text-white/70">Discord: discord.bkt-info.org</li>
+              <li className="text-white/70">Discord: <a href={"https://discord.bkt-info.org"}>discord.bkt-info.org</a></li>
             </ul>
           </div>
         </div>
