@@ -1,10 +1,10 @@
 import React from 'react';
-import { Post, Participant } from '../types';
+import { Post, User } from '../types';
 import GlassCard from './GlassCard';
 
 interface PostListProps {
   posts: Post[];
-  participants: Participant[];
+  participants: User[];
 }
 
 const PostList: React.FC<PostListProps> = ({ posts, participants }) => {

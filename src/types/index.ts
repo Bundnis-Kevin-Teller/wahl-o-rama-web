@@ -1,14 +1,16 @@
-export interface Participant {
+export interface User {
   id: number;
   name: string;
+  email: string;
   role: string;
   avatar: string;
+  passwordHash: string;
 }
 
 export interface Post {
   id: number;
   governmentId: number;
-  authorId: number;
+  author: User[];
   content: string;
   timestamp: string;
 }
@@ -18,7 +20,7 @@ export interface Government {
   name: string;
   slogan: string;
   color: string;
-  participants: Participant[];
+  userIDs: number[];
   programUrl: string;
   posts: Post[];
 }

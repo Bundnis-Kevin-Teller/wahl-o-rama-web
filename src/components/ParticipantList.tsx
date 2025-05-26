@@ -1,9 +1,9 @@
 import React from 'react';
-import { Participant } from '../types';
+import { User } from '../types';
 import GlassCard from './GlassCard';
 
 interface ParticipantListProps {
-  participants: Participant[];
+  participants: User[];
   color: string;
 }
 
