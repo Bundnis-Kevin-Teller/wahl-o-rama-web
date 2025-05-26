@@ -10,7 +10,7 @@ export interface User {
 export interface Post {
   id: number;
   governmentId: number;
-  author: User[];
+  authorId: number;
   content: string;
   timestamp: string;
 }
