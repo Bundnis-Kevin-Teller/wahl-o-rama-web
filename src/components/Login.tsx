@@ -1,23 +1,43 @@
 import React, { useState, FormEvent } from 'react';
+import bcrypt from "bcryptjs";
+import { Users } from "../data/users.ts"
 
 const Login: React.FC = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
-    const handleLoginSubmit = (e: FormEvent) => {
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
+
+    const handleLoginSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // TODO: Adam – Auth logic hier rein
+
+        const user = Users.find((u) => u.email === email);
+
+        if (!user) {
+            setError("Benutzer nicht gefunden");
+            return;
+        }
+
+        const isMatch = await bcrypt.compare(password, user.passwordHash);
+
+        if (isMatch) {
+            alert(`Willkommen, ${user.name}`);
+            setError('');
+            // TODO: Redirect
+        } else {
+            setError('Falsches Passwort');
+        }
     };
 
     return (
         <div className="min-h-screen relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-blue-900 via-purple-900 to-cyan-600 animate-background">
-            
+
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute w-60 h-60 bg-cyan-400 opacity-30 rounded-full blur-3xl top-[-50px] left-[-50px] animate-ping"></div>
                 <div className="absolute w-40 h-40 bg-purple-500 opacity-20 rounded-full blur-2xl bottom-[-30px] right-[-30px] animate-pulse"></div>
             </div>
 
-            
+
             <div className="z-10 bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl shadow-2xl p-10 w-full max-w-md text-white transition-all duration-300">
                 <h2 className="text-4xl font-bold text-center mb-8 text-white drop-shadow-[0_0_12px_rgba(0,255,255,0.5)]">
                     ✨ Login ✨
@@ -52,6 +72,9 @@ const Login: React.FC = () => {
                         🚀 Let's Go!
                     </button>
                 </form>
+                {error && (
+                    <div className="text-red-300 text-sm">{error}</div>
+                )}
                 <p className="mt-6 text-center text-sm text-white/60">Solltest du dein Passwort vergessen haben, melde dich bitte bei dem Support :)</p>
             </div>
         </div>
