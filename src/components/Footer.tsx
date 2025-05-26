@@ -40,12 +40,20 @@ const Footer: React.FC = () => {
             <h3 className="font-semibold text-lg mb-4">Kontakt</h3>
             <ul className="space-y-2">
               <li className="text-white/70">Discord: <a href={"https://discord.bkt-info.org"}>discord.bkt-info.org</a></li>
+              <li className="text-white/70">Email: <a href={"mailto:kontakt@bkt-info.org"}>kontakt@bkt-info.org</a></li>
+              <li className="text-white/70">Telefon: +49 15566595553</li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm text-white/60">
           <p>© {new Date().getFullYear()} WAHL-O-RAMA. Alle Rechte vorbehalten.</p>
+          <ul>
+                <Link to="/datenschutz" className="text-white/70 hover:text-white transition-colors">
+                  Datenschutz
+                </Link>
+              </ul>
+              
           <p className="mt-2">
           
           </p>

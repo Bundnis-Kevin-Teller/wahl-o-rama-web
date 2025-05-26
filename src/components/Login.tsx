@@ -1,6 +1,6 @@
 import React, { useState, FormEvent } from 'react';
 import bcrypt from "bcryptjs";
-import { Users } from "../data/users.ts"
+import { Users } from "../data/users"
 
 const Login: React.FC = () => {
 
