@@ -39,6 +39,9 @@ const Header: React.FC = () => {
           <Link to="/governments" className="text-white hover:text-blue-300 transition-colors duration-200">
             Regierungen
           </Link>
+          <Link to="/login" className="text-white hover:text-blue-300 transition-colors duration-200">
+            Login
+          </Link>
           
         </nav>
 
