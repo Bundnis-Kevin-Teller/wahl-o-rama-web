@@ -4,6 +4,8 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import GovernmentsPage from './pages/GovernmentsPage';
 import GovernmentDetailPage from './pages/GovernmentDetailPage';
+import LoginPage from "./pages/LoginPage.tsx";
+import UserPage from "./pages/UserPage.tsx";
 
 
 function App() {
@@ -16,7 +18,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/governments" element={<GovernmentsPage />} />
             <Route path="/government/:id" element={<GovernmentDetailPage />} />
-            
+            <Route path="/login" element={<LoginPage />}/>
+            <Route path="/user/:id" element={<UserPage />} />
           </Routes>
         </main>
         <Footer />
