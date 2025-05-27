@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from 'react';
 import bcrypt from "bcryptjs";
 import { Users } from "../data/users"
-
+import { Link } from 'react-router-dom';
 const Login: React.FC = () => {
 
     const [email, setEmail] = useState<string>('');
@@ -76,6 +76,12 @@ const Login: React.FC = () => {
                     <div className="text-red-300 text-sm">{error}</div>
                 )}
                 <p className="mt-6 text-center text-sm text-white/60">Solltest du dein Passwort vergessen haben, melde dich bitte bei dem Support :)</p>
+                <p className="mt-6 text-center text-sm text-white/60">
+                    Du hast noch kein Konto? Dann{' '}
+                <Link to="/register" className="text-cyan-300 hover:text-cyan-100 underline">
+                    registriere dich hier
+                </Link>
+</p>
             </div>
         </div>
     );
