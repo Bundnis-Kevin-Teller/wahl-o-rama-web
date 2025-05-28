@@ -7,6 +7,7 @@ import GovernmentDetailPage from './pages/GovernmentDetailPage';
 import LoginPage from "./pages/LoginPage.tsx";
 import UserPage from "./pages/UserPage.tsx";
 import DatenschutzPage from './pages/DatenschutzPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/login" element={<LoginPage />}/>
             <Route path="/user/:id" element={<UserPage />} />
             <Route path="/datenschutz" element={<DatenschutzPage />} />
+            <Route path="/register" element={<RegisterPage />} />
           </Routes>
         </main>
         <Footer />

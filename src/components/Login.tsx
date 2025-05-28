@@ -1,13 +1,14 @@
 import React, { useState, FormEvent } from 'react';
 import bcrypt from "bcryptjs";
 import { Users } from "../data/users"
-
+import { Link } from 'react-router-dom';
 const Login: React.FC = () => {
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
 
+    const [showPassword, setShowPassword] = useState(false);
     const handleLoginSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -56,14 +57,34 @@ const Login: React.FC = () => {
                     </div>
                     <div>
                         <label className="block text-sm font-semibold mb-2">Passwort</label>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                            className="w-full px-4 py-3 rounded-xl bg-white/20 text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white/30 transition-all"
-                            placeholder="••••••••"
-                        />
+                        <div className="relative">
+    <input
+        type={showPassword ? "text" : "password"}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+        placeholder="••••••••"
+        className="w-full px-4 py-3 pr-12 rounded-xl bg-white/20 text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white/30 transition-all"
+    />
+    <button
+        type="button"
+        onClick={() => setShowPassword(!showPassword)}
+        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white/60 hover:text-white transition"
+    >
+        {showPassword ? (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10 0-1.408.293-2.747.825-3.975M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.07 4.93a10 10 0 012.83 7.07 9.99 9.99 0 01-10 10 9.957 9.957 0 01-7.07-2.93M1 1l22 22" />
+            </svg>
+        ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+        )}
+    </button>
+</div>
+
                     </div>
                     <button
                         type="submit"
@@ -76,6 +97,12 @@ const Login: React.FC = () => {
                     <div className="text-red-300 text-sm">{error}</div>
                 )}
                 <p className="mt-6 text-center text-sm text-white/60">Solltest du dein Passwort vergessen haben, melde dich bitte bei dem Support :)</p>
+                <p className="mt-6 text-center text-sm text-white/60">
+                    Du hast noch kein Konto? Dann{' '}
+                <Link to="/register" className="text-cyan-300 hover:text-cyan-100 underline">
+                    registriere dich hier
+                </Link>
+</p>
             </div>
         </div>
     );
